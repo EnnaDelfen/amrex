@@ -82,8 +82,8 @@ ifeq ($(USE_CUDA),TRUE)
   DEFINES := $(DEFINES)
 
   # -Xptxas=-v provides too much info when using Thrust
-  CXXFLAGS := -Wno-deprecated-gpu-targets -x cu --std=c++11 -ccbin=$(CXX) -Xcompiler='$(CXXFLAGS)' -gencode=arch=compute_60,code=sm_60 -lineinfo
-  CFLAGS := -Wno-deprecated-gpu-targets -x c -ccbin=$(CC) -Xcompiler='$(CFLAGS)' -gencode=arch=compute_60,code=sm_60 -lineinfo
+  CXXFLAGS := --expt-relaxed-constexpr -Wno-deprecated-gpu-targets -x cu --std=c++11 -ccbin=$(CXX) -Xcompiler='$(CXXFLAGS)' -gencode=arch=compute_60,code=sm_60 -lineinfo
+  CFLAGS := --expt-relaxed-constexpr -Wno-deprecated-gpu-targets -x c -ccbin=$(CC) -Xcompiler='$(CFLAGS)' -gencode=arch=compute_60,code=sm_60 -lineinfo
 
   HOST_CXX := $(CXX)
   HOST_CC := $(CC)
